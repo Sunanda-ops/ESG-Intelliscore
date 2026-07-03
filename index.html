@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESG Score Prediction & Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="project_logo.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#hero" class="home-nav-trigger">Home</a></li>
+                <li><a href="#metrics" class="home-nav-trigger">Sustainability Metrics</a></li>
+                <li><a href="#" class="metric-dashboard-trigger" data-target="report-card-dashboard">Reporting</a></li>
+                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sunandanandi704@gmail.com" target="_blank">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-view">
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Driving Sustainable Futures with ESG Data and Sentiment Analysis</h1>
+                <p>Unlock comprehensive sustainability reporting and insights to make informed decisions.</p>
+                <a href="#metrics" class="cta-button">Explore Metrics</a>
+                <a href="#demo" class="cta-button">Book a Demo</a>
+            </div>
+            <div class="hero-image"></div>
+        </section>
+
+        <section class="carbon-section">
+            <h2>How ESG Intelliscore strengths your strategy:</h2>
+            <div class="features-container">
+                <div class="feature-item">
+                    <div class="icon">🔍</div>
+                    <p>One source of truth for all your scope 1, 2 and 3 GHG emissions.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🛡️📄</div>
+                    <p>Organize data collection with multiple layers of verification and approval.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🛡️</div>
+                    <p>Manage data workflows and accuracy with role-based permissions.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">⚙️</div>
+                    <p>Calculate carbon impact from multiple sources and units.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="icon">🛡️🔑</div>
+                    <p>Auditor-access permissions to simplify any audit.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="metrics">
+            <h2>Sustainability Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <h3><a href="#" class="metric-dashboard-trigger" data-target="environmental-dashboard">Environmental Impact</a></h3>
+                    <p>Track carbon emissions, energy usage, and waste reduction.</p>
+                    <div class="chart-container-preview">
+                        <canvas id="envChart"></canvas>
+                    </div>
+                    <button class="dashboard-btn" id="updateChart">Update Chart</button>
+                </div>
+                <div class="metric-card">
+                    <h3><a href="#" class="metric-dashboard-trigger" data-target="social-dashboard">Social Responsibility</a></h3>
+                    <p>Monitor diversity, employee well-being, and community engagement.</p>
+                    <p>Data: 85% diversity score, 90% employee satisfaction.</p>
+                    <img src="https://www.shutterstock.com/image-photo/esg-environmental-social-governance-policy-260nw-2608111461.jpg" alt="Social Responsibility Preview" class="preview-img">
+                </div>
+                <div class="metric-card">
+                    <h3><a href="#" class="metric-dashboard-trigger" data-target="governance-dashboard">Governance</a></h3>
+                    <p>Assess board composition, ethics, and risk management.</p>
+                    <img src="https://www.mdpi.com/jrfm/jrfm-18-00413/article_deploy/html/images/jrfm-18-00413-g005.png" alt="Governance Preview" class="preview-img">
+                </div>
+            </div>
+        </section>
+
+        <section id="reporting">
+            <h2>Sustainability Reporting</h2>
+            <p>Generate detailed reports with real-time data from trusted sources. Integrate with your systems for seamless ESG compliance.</p>
+            <div class="report-preview">
+                <img src="https://cdn.azeusconvene.com/wp-content/uploads/Mobile-%E2%80%93-39-ESG-ratings.jpg" alt="Report Preview"> 
+            </div>
+            <div class="reporting">
+                <h3><a href="#" class="metric-dashboard-trigger" data-target="report-card-dashboard">Click here to see a demo report_card</a></h3>
+            </div>
+        </section>
+
+        <section id="demo">
+            <h2>Book a Demo / Generate Predictive Report</h2>
+            <p>Enter parameters below to instantly build an updated ESG analysis sheet.</p>
+            <form id="demoForm">
+                <div class="form-group">
+                    <label for="company">Company Name *</label>
+                    <input type="text" id="company" name="company" placeholder="e.g. Acme Tech Solutions" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State *</label>
+                    <select id="state" name="state" required>
+                        <option value="">Select State</option>
+                        <option value="MH">Maharashtra</option>
+                        <option value="KR">Karnataka</option>
+                        <option value="TN">Tamil Nadu</option>
+                        <option value="GJ">Gujarat</option>
+                        <option value="DH">Delhi</option>
+                        <option value="TL">Telangana</option>
+                        <option value="WB">West Bengal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LcxtmcsAAAAADJihu0jLNh8lhxu6RXreNU5hMjO"></div>
+                </div>
+                <button type="submit" class="submit-button-ui">Submit Request & Download</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="dashboard-view-container" style="display: none;">
+        <button id="back-to-home-btn" class="back-link">← Back to Home Page</button>
+        
+        <section id="environmental-dashboard" class="sub-dashboard" style="display: none;">
+            <h2>Environmental Impact</h2>
+            <h3>Understanding Our Environmental Responsibility</h3>
+            <p>ESG IntelliScore is designed to support environmental sustainability by transforming unstructured data such as reports, news articles, and public disclosures into meaningful ESG scores using sentiment analysis. By doing so, the platform helps organizations, investors, and regulators make informed, responsible decisions that positively impact the environment.</p>
+            
+            <h2>How ESG IntelliScore Supports Environmental Sustainability</h2>
+            
+            <div class="section-box">
+                <img src="promoting_transperency.png" alt="Promoting Transparency">
+                <div class="section-text">
+                    <h3>1. Promoting Transparency</h3>
+                    <p>ESG IntelliScore converts qualitative environmental information into measurable insights. This transparency discourages greenwashing and encourages organizations to adopt genuine environmental practices.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Early_Detection_of_Environmental_Risks.png" alt="Early Detection of Environmental Risks">
+                <div class="section-text">
+                    <h3>2. Early Detection of Environmental Risks</h3>
+                    <p>By analyzing sentiment from environmental disclosures and public sources, ESG IntelliScore can identify negative trends such as pollution incidents, regulatory violations, or sustainability concerns at an early stage. This allows organizations to take corrective actions before environmental damage escalates.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Encouraging_Sustainable_Investment.png" alt="Encouraging Sustainable Investment">
+                <div class="section-text">
+                    <h3>3. Encouraging Sustainable Investment</h3>
+                    <p>Environmental scores generated by ESG IntelliScore help guide investments toward environmentally responsible companies. This creates financial incentives for organizations to reduce emissions, improve waste management, and adopt cleaner energy solutions.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Environmental_Cost.png" alt="Reducing the Environmental Cost">
+                <div class="section-text">
+                    <h3>4. Reducing the Environmental Cost of ESG Evaluation</h3>
+                    <p>Traditional ESG assessments often require manual audits, extensive paperwork, and physical travel. ESG IntelliScore provides a digital, automated alternative that significantly reduces paper usage, travel-related emissions, and operational inefficiencies.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Computing_Resources.png" alt="Responsible Use of AI">
+                <div class="section-text">
+                    <h3>Responsible Use of AI and Computing Resources</h3>
+                    <p>While ESG IntelliScore uses machine learning models for sentiment analysis, it is designed with efficiency in mind. Lightweight models, optimized processing, and cloud infrastructure powered by renewable energy sources help minimize the system’s carbon footprint.</p>
+                </div>
+            </div>
+
+            
+
+            <div class="commitment-container">
+                <h3>Our Commitment</h3>
+                <p>At ESG IntelliScore, we are committed to continuous improvement – not only in aiding sustainability efforts but also in minimizing the platform’s carbon environmental footprint.</p>
+            </div>
+        </section>
+
+        <section id="social-dashboard" class="sub-dashboard" style="display: none;">
+            <h2>Social Impact of ESG IntelliScore</h2>
+            <h3>Understanding Our Social Responsibility</h3>
+            <p>ESG IntelliScore is designed to promote social responsibility by transforming unstructured information such as news articles, corporate disclosures, and public sentiment into meaningful ESG insights using sentiment analysis and data-driven evaluation. By doing so, the platform supports investors, organizations, and regulators in making ethical, inclusive, and socially responsible decisions that positively influence communities and society at large.</p>
+            
+            <h2>How ESG IntelliScore Supports Social Responsibility</h2>
+
+            <div class="section-box">
+                <img src="Social_Transparency.png" alt="Social Transparency">
+                <div class="section-text">
+                    <h3>1. Promoting Social Transparency</h3>
+                    <p>ESG IntelliScore converts qualitative social information — such as labor practices, diversity initiatives, workplace safety records, and community engagement efforts — into measurable insights. This transparency reduces information gaps and helps stakeholders better understand how companies impact employees, consumers, and communities.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Social_Risks.png" alt="Early Detection of Social Risks">
+                <div class="section-text">
+                    <h3>2. Early Detection of Social Risks</h3>
+                    <p>By analyzing sentiment from company-related news and disclosures, ESG IntelliScore can identify early warning signals such as labor disputes, discrimination allegations, unsafe working conditions, or community conflicts. Detecting these issues early allows organizations to address concerns proactively before they escalate into larger social crises.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Ethical_Corporate.png" alt="Encouraging Ethical Corporate Behavior">
+                <div class="section-text">
+                    <h3>3. Encouraging Ethical Corporate Behavior</h3>
+                    <p>When companies understand that their social practices influence ESG evaluations and investor perception, they are incentivized to maintain ethical standards. ESG IntelliScore reinforces the importance of fair labor policies, diversity and inclusion initiatives, employee welfare, and community development programs.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Supporting_Inclusive_Investment_Decisions.png" alt="Supporting Inclusive Investment Decisions">
+                <div class="section-text">
+                    <h3>4. Supporting Inclusive Investment Decisions</h3>
+                    <p>Social scores generated by ESG IntelliScore help investors allocate capital toward companies that demonstrate strong social responsibility. This encourages financial markets to reward organizations that prioritize employee rights, customer protection, data privacy, and social equity.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="information_inequality.png" alt="Reducing Information Inequality">
+                <div class="section-text">
+                    <h3>Reducing Information Inequality in ESG Evaluation</h3>
+                    <p>Traditional ESG analysis is often accessible only to large institutional investors with advanced research capabilities. ESG IntelliScore provides a digital, automated approach that democratizes access to ESG insights. By making socially relevant information measurable and accessible, the platform empowers retail investors and smaller stakeholders to make informed decisions.</p>
+                </div>
+            </div>
+
+            
+
+            <div class="commitment-container">
+                <h3>Our Commitment</h3>
+                <p>ESG IntelliScore is committed to continuously improving the fairness, transparency, and reliability of its social impact analysis. As the platform evolves, it will prioritize ethical AI practices, unbiased data processing, and responsible reporting to ensure that technology supports positive societal progress.</p>
+                <p>Thanks for visiting us.</p>
+                <button class="dashboard-btn" id="learnMore">Learn More About Social Metrics</button>
+            </div>
+        </section>
+
+        <section id="governance-dashboard" class="sub-dashboard" style="display: none;">
+            <h2>Governance Impact of ESG IntelliScore</h2>
+            <h3>Understanding Our Governance Responsibility</h3>
+            <p>ESG IntelliScore is designed to strengthen corporate governance awareness by transforming unstructured information such as financial disclosures, regulatory reports, news articles, and public sentiment into measurable governance insights using sentiment analysis and data-driven evaluation. By doing so, the platform supports investors, regulators, and stakeholders in identifying ethical standards, transparency levels, and leadership accountability within organizations.</p>
+            
+            <h2>How ESG IntelliScore Supports Strong Governance</h2>
+
+            <div class="section-box">
+                <img src="promoting_transperency.png" alt="Promoting Transparency and Accountability">
+                <div class="section-text">
+                    <h3>1. Promoting Transparency and Accountability</h3>
+                    <p>ESG IntelliScore converts qualitative governance-related information — such as board decisions, executive conduct, compliance records, and regulatory disclosures — into structured and measurable insights. This transparency helps investors better understand how companies are managed and how decisions are made at the leadership level.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Early_Detection_of_Governance_Risks.png" alt="Early Detection of Governance Risks">
+                <div class="section-text">
+                    <h3>2. Early Detection of Governance Risks</h3>
+                    <p>Through sentiment analysis of real-time news and disclosures, ESG IntelliScore can identify early warning signals such as fraud allegations, corruption cases, financial irregularities, executive misconduct, or regulatory violations. Detecting such issues early enables investors and stakeholders to assess potential governance risks before they escalate.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Ethical_Leadership.png" alt="Encouraging Ethical Leadership">
+                <div class="section-text">
+                    <h3>3. Encouraging Ethical Leadership</h3>
+                    <p>When governance practices directly influence ESG evaluation and investor perception, companies are encouraged to maintain high standards of ethical leadership. ESG IntelliScore reinforces the importance of board independence, compliance culture, transparent reporting, and responsible executive behavior.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Risk-Aware_Investment.png" alt="Supporting Risk-Aware Investment Decisions">
+                <div class="section-text">
+                    <h3>4. Supporting Risk-Aware Investment Decisions</h3>
+                    <p>Governance scores generated by ESG IntelliScore help investors assess management integrity and institutional stability. By incorporating governance signals into investment analysis, the system supports more stable, long-term, and ethically aligned capital allocation decisions.</p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <img src="Ethical_Corporate.png" alt="Digital Automation">
+                <div class="section-text">
+                    <h3>Improving Governance Evaluation Through Digital Automation</h3>
+                    <p>Traditional governance assessments often rely on manual reviews of lengthy reports and regulatory filings. ESG IntelliScore provides an automated and data-driven alternative that enhances efficiency, reduces subjectivity, and ensures consistent evaluation of governance-related signals.</p>
+                </div>
+            </div>
+
+            
+
+            <div class="commitment-container">
+                <h3>Our Commitment</h3>
+                <p>ESG IntelliScore is committed to maintaining fairness, accuracy, and transparency in governance analysis. As the platform evolves, it will continue to refine its evaluation mechanisms, ensure responsible AI usage, and promote governance practices that align with ethical standards and regulatory compliance.</p>
+                <p>Thanks for visiting us.</p>
+                <button class="dashboard-btn" id="updateData">Update Governance Metrics</button>
+            </div>
+        </section>
+
+        <section id="report-card-dashboard" class="sub-dashboard" style="display: none;">
+            <h2 id="report-main-title">INVESTOR ESG PREDICTOR INSIGHTS</h2>
+            <h3 id="report-sub-title">Predictive Analytics & Sentiment Analysis for Smarter Decisions</h3>
+            
+            <div class="grid-layout">
+                <div class="section-box dashboard-card main-report-card" style="background:white; border-left:5px solid #27ae60;">
+                    <div class="section-text">
+                        <h3 style="text-align:left; font-size:1.1rem; color:#7f8c8d; font-family:'Inter';" id="card-display-mode-label">DEMO ESG REPORT CARD:</h3>
+                        <h2 style="text-align:left; font-size:1.8rem; margin-top:5px; color:#2c3e50;" id="target-company-display">Infosys Ltd</h2>
+                        <p style="text-align:left; font-size:1rem; color:#7f8c8d; margin-bottom:15px;" id="target-location-row">Region: India (Global)</p>
+                        
+                        <div class="score-header">
+                            <div class="big-score">
+                                <span id="overall-score" style="font-size: 5.5rem; font-weight: bold; color: #003366;">85</span>
+                                <p style="font-weight:600; color:#7f8c8d;">Predicted ESG Score (Overall)</p>
+                            </div>
+                            <div class="trend-indicator" id="trend-display-color-wrapper">
+                                <div id="dynamic-trend-graph-target" style="margin-bottom:8px;">
+                                     <img src="pts.png" alt="Performance Trend Graph" style="width:140px; height:auto;">
+                                </div>
+                                <span id="trend-points-value" style="font-size:1.4rem; font-weight:700;">▲ +12 pts</span>
+                                <p style="color:#7f8c8d; font-size:0.85rem;">vs Sector Average</p>
+                            </div>
+                        </div>
+
+                        <div class="esg-breakdown" style="display: flex; gap: 20px; margin: 30px 0; justify-content: space-around;">
+                            <div class="chart-item" style="text-align: center;">
+                                <div class="ring" id="ring-env" data-percent="88" style="--color: #27ae60;"></div>
+                                <p style="margin-top: 8px; font-weight: 600; color:#7f8c8d; font-size:0.85rem;">Environmental</p>
+                            </div>
+                            <div class="chart-item" style="text-align: center;">
+                                <div class="ring" id="ring-soc" data-percent="79" style="--color: #2980b9;"></div>
+                                <p style="margin-top: 8px; font-weight: 600; color:#7f8c8d; font-size:0.85rem;">Social</p>
+                            </div>
+                            <div class="chart-item" style="text-align: center;">
+                                <div class="ring" id="ring-gov" data-percent="89" style="--color: #7f8c8d;"></div>
+                                <p style="margin-top: 8px; font-weight: 600; color:#7f8c8d; font-size:0.85rem;">Governance</p>
+                            </div>
+                        </div>
+
+                        <div class="sentiment-section" style="background: #e6f2ff; padding: 18px; border-radius: 8px; margin-top: 20px;">
+                            <h4 style="color: #003366; margin-bottom: 5px; text-align:left; font-size:0.95rem;">Sentiment Analysis Classification</h4>
+                            <div class="sentiment-bar" style="font-weight: bold; color: #003366; display:flex; gap:10px; font-size:1.1rem; border-top:none; padding-top:0;">
+                                <span id="thumbs-indicator-symbol">👍</span> <span id="sentiment-percentage-status">POSITIVE - 92%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-wrapper" style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="section-box text-only-box" style="background:white; border-left:5px solid #2980b9; padding:25px;">
+                        <div class="section-text">
+                            <h3 style="font-size:0.85rem; letter-spacing:1px; color:#7f8c8d; text-transform:uppercase; margin-bottom:15px; font-family:'Inter';">KEY INSIGHTS</h3>
+                            <ul style="padding-left: 20px; color: #535343;" id="dynamic-insights-list">
+                                <li>Strong community engagement driving positive social sentiment.</li>
+                                <li>Recent green initiatives boost environmental score.</li>
+                                <li>Stable governance structure confirmed.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="section-box text-only-box" style="background:white; border-left:5px solid #7f8c8d; padding:25px;">
+                        <div class="section-text">
+                            <h3 style="font-size:0.85rem; letter-spacing:1px; color:#7f8c8d; text-transform:uppercase; margin-bottom:15px; font-family:'Inter';">TRENDS & COMPARISON</h3>
+                            <p class="summary" id="dynamic-comparison-summary" style="font-weight: bold; color: #003366; text-align: center; margin-top:10px; font-size:1.1rem;">Outperforming industry average by 15%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="privacy-policy" class="sub-dashboard" style="display: none;">
+            <h2>Privacy Policy</h2>
+            <h3>Your trust matters. Here’s how we protect your data.</h3>
+            <div class="section-box text-only-box" style="background:white;">
+                <div class="section-text">
+                    <p>ESG Intelliscore securely handles predictive analytic parameters. We employ industry-standard encryption safeguards to keep enterprise reporting safe from leakage risks.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="terms-of-service" class="sub-dashboard" style="display: none;">
+            <h2>Terms of Service</h2>
+            <h3>Effective Date: February 2026</h3>
+            <div class="section-box text-only-box" style="background:white;">
+                <div class="section-text">
+                    <p>Calculated data outputs are structured assessments and do not establish binding financial or investment trading advisories.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 ESG Intelliscore. All rights reserved.</p>
+            <ul>
+                <li><a href="#" class="metric-dashboard-trigger" data-target="privacy-policy">Privacy Policy</a></li>
+                <li><a href="#" class="metric-dashboard-trigger" data-target="terms-of-service">Terms of Service</a></li>
+                <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=sunandanandi704@gmail.com" target="_blank">Contact</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
